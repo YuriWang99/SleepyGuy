@@ -79,17 +79,17 @@ public class Mechanics : MonoBehaviour
                 //Sleepy_text.text = (Sleepy_Start / 30).ToString("00.");
                 FungusFlowchart.SetBooleanVariable("SleepyNotice", false);
 
-                if(Sleepy_Start >29)
+                if(Sleepy_Start >25)
                 {
                     Debug.Log("Played");
                     Yawn3.Play();
                 }
-                else if (Sleepy_Start > 20)
+                else if (Sleepy_Start > 15)
                 {
                     Debug.Log("Played");
                     Yawn2.Play();
                 }
-                else if (Sleepy_Start > 10)
+                else if (Sleepy_Start > 5)
                 {
                     Debug.Log("Played");
                     Yawn1.Play();
