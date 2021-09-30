@@ -10,6 +10,7 @@ public class Timer : MonoBehaviour
     public Slider timerSlider;
     public float timeStart;//seconds 720s
     public float MaxTime = 720;
+    public float totalTime;
     public int Hour;
     public int Minute;
     public Text textBox;
@@ -33,9 +34,10 @@ public class Timer : MonoBehaviour
         {
             //720 24h »»Ëã 30s = 1h 30s = 60min 1s = 2 min
             timeStart += Time.deltaTime;
+            totalTime = timeStart;
             Hour = (int)timeStart /30;
             Minute = (int)(timeStart - Hour*30)*2;
-            if(Hour+9>24)
+            if(Hour+9>=24)
             {
                 textBox.text = (Hour + 9 - 24).ToString("00") + ":" + Minute.ToString("00");// Timer font 00:00
             }
@@ -49,8 +51,10 @@ public class Timer : MonoBehaviour
         timerSlider.value = MaxTime - timeStart;
 
         //Timer finished
-        if (timeStart >= MaxTime)
+        if (totalTime >= MaxTime)
         {
+            Debug.Log("Time is up");
+            totalTime += timeStart;
             timeStart = 0;
             FungusFlowchart.SetBooleanVariable("TimerActive", false);
         }

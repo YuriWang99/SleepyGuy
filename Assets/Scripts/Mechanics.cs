@@ -119,8 +119,10 @@ public class Mechanics : MonoBehaviour
             //任务完成
         }
 
-        if(Timer.GetComponent<Timer>().timeStart>= Timer.GetComponent<Timer>().MaxTime&& Work_Start< MaxWork)
+        if(Timer.GetComponent<Timer>().totalTime>= Timer.GetComponent<Timer>().MaxTime&& Work_Start< MaxWork)
         {
+            Debug.Log("you lost your job");
+            FungusFlowchart.SetBooleanVariable("GameEnd", true);
             //任务失败
         }
 
@@ -138,9 +140,9 @@ public class Mechanics : MonoBehaviour
         else if (FungusFlowchart.GetIntegerVariable("SleepType") == 1)
         {
             FungusFlowchart.SetBooleanVariable("Working", false);
-            //short sleep 小睡：耗时短有闹铃(30min-60min)（困倦值-30%）工作效率+20，有很大机率会再次睡着（50%），可以强行起床（70%）但会增加困倦值（5）
+            //short sleep 小睡：耗时短有闹铃(30min-2h)（困倦值-30%）工作效率+20，有很大机率会再次睡着（50%），可以强行起床（70%）但会增加困倦值（5）
 
-            SleepTime = Random.Range(15f,30f); //生成睡眠时间       
+            SleepTime = Random.Range(15f,60f); //生成睡眠时间       
             Sleepy_Start -= 9;//困倦条
             if(Sleepy_Start<0)
             {
