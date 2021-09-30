@@ -15,9 +15,9 @@ public class Mechanics : MonoBehaviour
     public float MaxSleepy;
 
     //sudden die
-    public Slider SuddenDie_Slider;
-    public float SuddenDie_Start;
-    public Text SuddenDie_text;
+    //public Slider SuddenDie_Slider;
+    //public float SuddenDie_Start;
+    //public Text SuddenDie_text;
 
 
 
@@ -30,10 +30,10 @@ public class Mechanics : MonoBehaviour
     public float MaxWork;
 
     //bool Working=false;
-    public Text WorkBtn_text;
+    //public Text WorkBtn_text;
 
     //Start Button
-    public GameObject StartBtn;
+    //public GameObject StartBtn;
 
     //Sleep/Slack Function
     //SleepType说明：0=none sleep，1=short sleep, 2=long sleep;
@@ -54,8 +54,8 @@ public class Mechanics : MonoBehaviour
 
         //Sudden die
         //SuddenDie_text.text = SuddenDie_Start.ToString();
-        SuddenDie_Slider.value = SuddenDie_Start;
-        SuddenDie_Slider.maxValue = Timer.GetComponent<Timer>().MaxTime - 2*30;
+        //SuddenDie_Slider.value = SuddenDie_Start;
+        //SuddenDie_Slider.maxValue = Timer.GetComponent<Timer>().MaxTime - 2*30;
 
 
         //Work
@@ -86,7 +86,7 @@ public class Mechanics : MonoBehaviour
             }
 
             //sudden die 醒着的时间/现在已经过的时间（
-            SuddenDie_Start = Timer.GetComponent<Timer>().timeStart - TotalSleepTime;
+            //SuddenDie_Start = Timer.GetComponent<Timer>().timeStart - TotalSleepTime;
             
             //SuddenDie_text.text = (SuddenDie_Start/360).ToString("00.");
         }
@@ -101,7 +101,7 @@ public class Mechanics : MonoBehaviour
             Work.SetActive(false);
         }
         //改workbtn 按键，停止工作
-        WorkBtn_text.text = FungusFlowchart.GetBooleanVariable("Working") ? "Pause" : "Work";
+        //WorkBtn_text.text = FungusFlowchart.GetBooleanVariable("Working") ? "Pause" : "Work";
 
         if (Work_Start>= MaxWork)
         {
@@ -116,7 +116,7 @@ public class Mechanics : MonoBehaviour
         //显示slider
         Sleepy_Slider.value = Sleepy_Start;
         Work_Slider.value = Work_Start;
-        SuddenDie_Slider.value = SuddenDie_Start;
+        //SuddenDie_Slider.value = SuddenDie_Start;
 
         //检测睡觉操作....................................................................................
         //short Sleep

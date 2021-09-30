@@ -15,8 +15,8 @@ public class Timer : MonoBehaviour
     public Text textBox;
 
     //Start Button
-    public GameObject StartBtn;
-    public Text startBtnText;
+    //public GameObject StartBtn;
+    //public Text startBtnText;
     //public bool timerActive = false;
     public Flowchart FungusFlowchart;
     void Start()
@@ -35,13 +35,13 @@ public class Timer : MonoBehaviour
             timeStart += Time.deltaTime;
             Hour = (int)timeStart /30;
             Minute = (int)(timeStart - Hour*30)*2;
-            if(Hour+8>24)
+            if(Hour+9>24)
             {
-                textBox.text = (Hour + 8 - 24).ToString("00") + ":" + Minute.ToString("00");// Timer font 00:00
+                textBox.text = (Hour + 9 - 24).ToString("00") + ":" + Minute.ToString("00");// Timer font 00:00
             }
             else
             {
-                textBox.text = (Hour + 8).ToString("00") + ":" + Minute.ToString("00");// Timer font 00:00
+                textBox.text = (Hour + 9).ToString("00") + ":" + Minute.ToString("00");// Timer font 00:00
             }
             
         }
@@ -56,11 +56,11 @@ public class Timer : MonoBehaviour
         }
     }
 
-    public void timerButton()
-    {
-        FungusFlowchart.SetBooleanVariable("TimerActive", !FungusFlowchart.GetBooleanVariable("TimerActive"));
-        startBtnText.text = FungusFlowchart.GetBooleanVariable("TimerActive") ? "Pause" : "Start";
+   // public void timerButton()
+    //{
+        //FungusFlowchart.SetBooleanVariable("TimerActive", !FungusFlowchart.GetBooleanVariable("TimerActive"));
+        //startBtnText.text = FungusFlowchart.GetBooleanVariable("TimerActive") ? "Pause" : "Start";
         // reset
 
-    }
+    //}
 }
