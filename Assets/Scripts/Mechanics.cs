@@ -79,17 +79,17 @@ public class Mechanics : MonoBehaviour
                 //Sleepy_text.text = (Sleepy_Start / 30).ToString("00.");
                 FungusFlowchart.SetBooleanVariable("SleepyNotice", false);
 
-                if(Sleepy_Start >25)
+                if(Sleepy_Start >25&& Sleepy_Start <30)
                 {
                     Debug.Log("Played");
                     Yawn3.Play();
                 }
-                else if (Sleepy_Start > 15)
+                else if (Sleepy_Start > 15 && Sleepy_Start < 25)
                 {
                     Debug.Log("Played");
                     Yawn2.Play();
                 }
-                else if (Sleepy_Start > 5)
+                else if (Sleepy_Start > 0 && Sleepy_Start < 15)
                 {
                     Debug.Log("Played");
                     Yawn1.Play();
@@ -116,7 +116,9 @@ public class Mechanics : MonoBehaviour
             Sleepy_Start = MaxSleepy;
             FungusFlowchart.SetBooleanVariable("Working", false);
             FungusFlowchart.SetBooleanVariable("SleepyNotice", true);
+            FungusFlowchart.SetBooleanVariable("ClickAccess", true);
             Work.SetActive(false);
+            Yawn1.Play(); Yawn2.Play(); Yawn3.Play();
         }
         //改workbtn 按键，停止工作
         //WorkBtn_text.text = FungusFlowchart.GetBooleanVariable("Working") ? "Pause" : "Work";
