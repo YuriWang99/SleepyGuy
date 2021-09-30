@@ -6,6 +6,9 @@ using Fungus;
 
 public class Mechanics : MonoBehaviour
 {
+    public GameObject LosePanel;
+    public GameObject WinPanel;
+
     public GameObject Timer;//720s
     // Start is called before the first frame update
     public Slider Sleepy_Slider;
@@ -122,9 +125,19 @@ public class Mechanics : MonoBehaviour
         if(Timer.GetComponent<Timer>().totalTime>= Timer.GetComponent<Timer>().MaxTime&& Work_Start< MaxWork)
         {
             Debug.Log("you lost your job");
-            FungusFlowchart.SetBooleanVariable("GameEnd", true);
+            FungusFlowchart.SetBooleanVariable("ClickAccess", false);
+            LosePanel.SetActive(true);
             //任务失败
         }
+        else if(Timer.GetComponent<Timer>().totalTime > Timer.GetComponent<Timer>().MaxTime && Work_Start >= MaxWork)
+        {
+            Debug.Log("you finish your work");
+            FungusFlowchart.SetBooleanVariable("ClickAccess", false);
+            WinPanel.SetActive(true);
+            //任务成功
+
+        }
+
 
         //显示slider
         Sleepy_Slider.value = Sleepy_Start;
