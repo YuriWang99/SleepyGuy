@@ -14,6 +14,7 @@ public class Mechanics : MonoBehaviour
 
     public float MaxSleepy;
 
+    public AudioSource Yawn1,Yawn2,Yawn3;
     //sudden die
     //public Slider SuddenDie_Slider;
     //public float SuddenDie_Start;
@@ -21,7 +22,7 @@ public class Mechanics : MonoBehaviour
 
 
 
-    //work
+    //work  //工作说明
     public GameObject Work;
     public Slider Work_Slider;
     public float Work_Start;
@@ -43,6 +44,7 @@ public class Mechanics : MonoBehaviour
     //SlackOff说明：
     public float SlackOffTime;
     //增益说明
+  
 
     void Start()
     {
@@ -76,6 +78,22 @@ public class Mechanics : MonoBehaviour
                 Sleepy_Start += Time.deltaTime;
                 //Sleepy_text.text = (Sleepy_Start / 30).ToString("00.");
                 FungusFlowchart.SetBooleanVariable("SleepyNotice", false);
+
+                if(Sleepy_Start >29)
+                {
+                    Debug.Log("Played");
+                    Yawn3.Play();
+                }
+                else if (Sleepy_Start > 20)
+                {
+                    Debug.Log("Played");
+                    Yawn2.Play();
+                }
+                else if (Sleepy_Start > 10)
+                {
+                    Debug.Log("Played");
+                    Yawn1.Play();
+                }
             }
 
             //work 240 秒满 （游戏里8h）
@@ -157,11 +175,14 @@ public class Mechanics : MonoBehaviour
             SleepTime = 0;
             FungusFlowchart.SetIntegerVariable("SleepType",0);
         }
+        //检测工作按键
+
         //检测slack off 操作..................................................................................
-        if(FungusFlowchart.GetIntegerVariable("SlackType")==0)
+        if (FungusFlowchart.GetIntegerVariable("SlackType")==0)
         {
             //没摸鱼
         }
+        
         else if (FungusFlowchart.GetIntegerVariable("SlackType") == 1)
         {
             //玩steam
@@ -221,6 +242,7 @@ public class Mechanics : MonoBehaviour
         //初始化SleepTime
         SlackOffTime = 0;
         FungusFlowchart.SetIntegerVariable("SlackType", 0);
+
     }
     public void PlayMobileGame()
     {
